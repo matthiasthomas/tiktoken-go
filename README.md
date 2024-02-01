@@ -1,26 +1,26 @@
 # tiktoken-go
 [简体中文](./README_zh-hans.md)
 
-OpenAI's tiktoken in Go. 
+OpenAI's tiktoken in Go.
 
 Tiktoken is a fast BPE tokeniser for use with OpenAI's models.
 
-This is a port of the original [tiktoken](https://github.com/openai/tiktoken).  
+This is a port of the original [tiktoken](https://github.com/openai/tiktoken).
 
 # Usage
 ## Install
 
 ```bash
-go get github.com/pkoukk/tiktoken-go
+go get github.com/matthiasthomas/tiktoken-go
 ```
 ## Cache
-Tiktoken-go has the same cache mechanism as the original Tiktoken library.  
+Tiktoken-go has the same cache mechanism as the original Tiktoken library.
 
-You can set the cache directory by using the environment variable TIKTOKEN_CACHE_DIR.   
+You can set the cache directory by using the environment variable TIKTOKEN_CACHE_DIR.
 
-Once this variable is set, tiktoken-go will use this directory to cache the token dictionary.   
+Once this variable is set, tiktoken-go will use this directory to cache the token dictionary.
 
-If you don't set this environment variable, tiktoken-go will download the dictionary each time you initialize an encoding for the first time.  
+If you don't set this environment variable, tiktoken-go will download the dictionary each time you initialize an encoding for the first time.
 
 ## Alternative BPE loaders
 If you don't want to use cache or download the dictionary each time, you can use alternative BPE loader.
@@ -30,11 +30,11 @@ Just call `tiktoken.SetBpeLoader` before calling `tiktoken.GetEncoding` or `tikt
 `BpeLoader` is an interface, you can implement your own BPE loader by implementing this interface.
 
 ### Offline BPE loader
-The offline BPE loader loads the BPE dictionary from embed files, it helps if you don't want to download the dictionary at runtime.  
+The offline BPE loader loads the BPE dictionary from embed files, it helps if you don't want to download the dictionary at runtime.
 
 Due to the size of the BPE dictionary, this loader is in other project.
 
-Include if you require this loader: [tiktoken_loader](https://github.com/pkoukk/tiktoken-go-loader)
+Include if you require this loader: [tiktoken_loader](https://github.com/matthiasthomas/tiktoken-go-loader)
 
 ## Examples
 ### Get Token By Encoding
@@ -44,7 +44,7 @@ package main
 
 import (
     "fmt"
-    "github.com/pkoukk/tiktoken-go"
+    "github.com/matthiasthomas/tiktoken-go"
 )
 
 func main()  {
@@ -76,7 +76,7 @@ package main
 
 import (
     "fmt"
-    "github.com/pkoukk/tiktoken-go"
+    "github.com/matthiasthomas/tiktoken-go"
 )
 
 func main()  {
@@ -117,7 +117,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/pkoukk/tiktoken-go"
+	"github.com/matthiasthomas/tiktoken-go"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -232,7 +232,7 @@ func NumTokensFromMessages(messages []openai.ChatCompletionMessage, model string
 ## get token by encoding
 [result](./doc/test_result.md#encoding-test-result)
 
-## get token by model  
+## get token by model
 [result](./doc/test_result.md#model-test-result)
 
 
@@ -246,11 +246,11 @@ func NumTokensFromMessages(messages []openai.ChatCompletionMessage, model string
 | tiktoken-go | 8795ns  | macOS 13.2 | Apple M1 | [UDHR](https://unicode.org/udhr) | 100000 |
 | tiktoken    | 8838ns  | macOS 13.2 | Apple M1 | [UDHR](https://unicode.org/udhr) | 100000 |
 
-It looks like the performance is almost the same.   
+It looks like the performance is almost the same.
 
 Maybe the difference is due to the difference in the performance of the machine.
 
-Or maybe my benchmark method is not appropriate.  
+Or maybe my benchmark method is not appropriate.
 
 If you have better benchmark method or if you want add your benchmark result, please feel free to submit a PR.
 

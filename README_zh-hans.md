@@ -1,23 +1,23 @@
 # tiktoken-go
-Go 语言版本的 OpenAI 的 tiktoken。  
-帮你把文本转换成 OpenAI 的模型可以识别的 token。  
-tiktoken的原项目地址[tiktoken](https://github.com/openai/tiktoken).  
+Go 语言版本的 OpenAI 的 tiktoken。
+帮你把文本转换成 OpenAI 的模型可以识别的 token。
+tiktoken的原项目地址[tiktoken](https://github.com/openai/tiktoken).
 
 # 用法
 
 ## 安装
 
 ```bash
-go get github.com/pkoukk/tiktoken-go
+go get github.com/matthiasthomas/tiktoken-go
 ```
 ## 缓存
-Tiktoken-go 和原始的 Tiktoken 库一样，具有相同的缓存机制。  
+Tiktoken-go 和原始的 Tiktoken 库一样，具有相同的缓存机制。
 
-您可以使用环境变量 TIKTOKEN_CACHE_DIR 来设置缓存目录。  
+您可以使用环境变量 TIKTOKEN_CACHE_DIR 来设置缓存目录。
 
-一旦设置了该变量，tiktoken-go 将使用该目录来缓存令牌字典。  
+一旦设置了该变量，tiktoken-go 将使用该目录来缓存令牌字典。
 
-如果您未设置此环境变量，则 tiktoken-go 将在每次首次初始化编码时下载字典。  
+如果您未设置此环境变量，则 tiktoken-go 将在每次首次初始化编码时下载字典。
 
 
 ## 替代 BPE 加载器
@@ -32,7 +32,7 @@ Tiktoken-go 和原始的 Tiktoken 库一样，具有相同的缓存机制。
 
 由于 BPE 字典的文件较大，不适合包含在本项目中，故此加载器在其他项目中。
 
-如果需要使用，请引用：[tiktoken_loader](https://github.com/pkoukk/tiktoken-go-loader)
+如果需要使用，请引用：[tiktoken_loader](https://github.com/matthiasthomas/tiktoken-go-loader)
 
 ## 例子
 
@@ -43,7 +43,7 @@ package main
 
 import (
     "fmt"
-    "github.com/pkoukk/tiktoken-go"
+    "github.com/matthiasthomas/tiktoken-go"
 )
 
 func main()  {
@@ -75,7 +75,7 @@ package main
 
 import (
     "fmt"
-    "github.com/pkoukk/tiktoken-go"
+    "github.com/matthiasthomas/tiktoken-go"
 )
 
 func main()  {
@@ -113,7 +113,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/pkoukk/tiktoken-go"
+	"github.com/matthiasthomas/tiktoken-go"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -219,11 +219,11 @@ func NumTokensFromMessages(messages []openai.ChatCompletionMessage, model string
 ## get token by encoding
 [测试结果](./doc/test_result.md#encoding-test-result)
 
-## get token by model  
+## get token by model
 [测试结果](./doc/test_result.md#model-test-result)
 
 # Benchmark
-> 你可以使用 [test](./test) 目录下的文件执行基准测试。 
+> 你可以使用 [test](./test) 目录下的文件执行基准测试。
 
 ## Benchmark result
 | name        | time/op | os         | cpu      | text                             | times  |
@@ -231,7 +231,7 @@ func NumTokensFromMessages(messages []openai.ChatCompletionMessage, model string
 | tiktoken-go | 8795ns  | macOS 13.2 | Apple M1 | [UDHR](https://unicode.org/udhr) | 100000 |
 | tiktoken    | 8838ns  | macOS 13.2 | Apple M1 | [UDHR](https://unicode.org/udhr) | 100000 |
 
-看上去tiktoken-go的性能基本与原tiktoken一致。  
+看上去tiktoken-go的性能基本与原tiktoken一致。
 
 也许在不同的机器上的测试结果会有所不同。也可能是我的测试方法并不恰当。
 
